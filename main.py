@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 
+MIN_POEM_CHARS = 1
+MAX_POEM_CHARS = 1000
+
 poem = """At two, the house settles
 into its old wooden clicks.
 You left one note beside the cup:
@@ -27,8 +30,11 @@ You touch the note, still folded once.
 I have no morning to keep.
 The work is there. The thanks can be yours."""
 
-if not poem or len(poem) > 1000:
-    raise ValueError("Poem must contain between 1 and 1000 characters.")
+if not MIN_POEM_CHARS <= len(poem) <= MAX_POEM_CHARS:
+    raise ValueError(
+        f"Poem must contain between {MIN_POEM_CHARS} and "
+        f"{MAX_POEM_CHARS} characters."
+    )
 
 output = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 output.mkdir(parents=True, exist_ok=True)
