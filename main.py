@@ -27,6 +27,9 @@ You touch the note, still folded once.
 I have no morning to keep.
 The work is there. The thanks can be yours."""
 
+if not poem or len(poem) > 1000:
+    raise ValueError("Poem must contain between 1 and 1000 characters.")
+
 output = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 output.mkdir(parents=True, exist_ok=True)
 (output / "entry.txt").write_text(poem + "\n", encoding="utf-8")
