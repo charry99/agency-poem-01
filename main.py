@@ -1,3 +1,5 @@
+"""Write the agency poem to its configured output directory."""
+
 import os
 from pathlib import Path
 
